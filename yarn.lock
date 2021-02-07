@@ -1932,7 +1932,7 @@
     "@storybook/components" "6.1.17"
     core-js "^3.0.1"
 
-"@storybook/addon-viewport@6.1.17":
+"@storybook/addon-viewport@6.1.17", "@storybook/addon-viewport@^6.1.17":
   version "6.1.17"
   resolved "https://registry.npmjs.org/@storybook/addon-viewport/-/addon-viewport-6.1.17.tgz"
   integrity sha512-vBtJ4o0XWSPIqhJRroo/hUjRUOVYOVP8kGXv9WDRS75988BTHDq75VAKLmdNN/MV8kBaANRppj9LdRw2Mxs5TA==
@@ -11719,9 +11719,9 @@ react-hotkeys@2.0.0:
     prop-types "^15.6.1"
 
 react-icons@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.1.0.tgz#9ca9bcbf2e3aee8e86e378bb9d465842947bbfc3"
-  integrity sha512-FCXBg1JbbR0vWALXIxmFAfozHdVIJmmwCD81Jk0EKOt7Ax4AdBNcaRkWhR0NaKy9ugJgoY3fFvo0PHpte55pXg==
+  version "4.2.0"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.2.0.tgz"
+  integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
 
 react-inspector@^5.0.1:
   version "5.1.0"
