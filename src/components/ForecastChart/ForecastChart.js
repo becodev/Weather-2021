@@ -8,14 +8,13 @@ import {
   YAxis,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 const ForecastChart = ({ data }) => {
   return (
-    <div>
+    <ResponsiveContainer height={250} width={"95%"}>
       <LineChart
-        height={250}
-        width={700}
         margin={{ top: 20, bottom: 20, left: 5, right: 5 }}
         data={data}
       >
@@ -27,7 +26,7 @@ const ForecastChart = ({ data }) => {
         <Line type="monotone" stroke="#FF0000" dataKey="min"></Line>
         <Line type="monotone" stroke="#0000FF" dataKey="max"></Line>
       </LineChart>
-    </div>
+    </ResponsiveContainer>
   );
 };
 
