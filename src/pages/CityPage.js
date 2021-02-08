@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import CityInfo from "./../components/CityInfo";
 import Weather from "./../components/Weather";
 import WeatherDetails from "./../components/WeatherDetails";
 import ForecastChart from "./../components/ForecastChart";
 import Forecast from "./../components/Forecast";
+import AppFrame from "./../components/AppFrame";
 
 const CityPage = (props) => {
   const city = "Buenos Aires";
@@ -39,24 +39,26 @@ const CityPage = (props) => {
   ];
 
   return (
-    <Grid container justify="space-around" direction="column" spacing={2}>
-      <Grid item container xs={12} justify="center" alingItems="flex-end">
-        <CityInfo city={city} country={country}></CityInfo>
-      </Grid>
+    <AppFrame>
+      <Grid container justify="space-around" direction="column" spacing={2}>
+        <Grid item container xs={12} justify="center" alingItems="flex-end">
+          <CityInfo city={city} country={country}></CityInfo>
+        </Grid>
 
-      <Grid container item xs={12} justify="center">
-        <Weather state={state} temperature={temperature}></Weather>
-        <WeatherDetails humidity={humidity} wind={wind}></WeatherDetails>
-      </Grid>
+        <Grid container item xs={12} justify="center">
+          <Weather state={state} temperature={temperature}></Weather>
+          <WeatherDetails humidity={humidity} wind={wind}></WeatherDetails>
+        </Grid>
 
-      <Grid item>
-        <ForecastChart data={data} />
-      </Grid>
+        <Grid item>
+          <ForecastChart data={data} />
+        </Grid>
 
-      <Grid item>
-        <Forecast forecastItemList={forecastItemList} />
+        <Grid item>
+          <Forecast forecastItemList={forecastItemList} />
+        </Grid>
       </Grid>
-    </Grid>
+    </AppFrame>
   );
 };
 
