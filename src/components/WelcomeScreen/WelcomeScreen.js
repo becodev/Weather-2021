@@ -28,7 +28,12 @@ const WelcomeScreen = ({ children }) => {
   }, [vanta]);
   //end useEffect
 
-  return <div ref={myRefDiv}>welcome screen</div>;
+  return (
+    <div className="full" ref={myRefDiv}>
+      {" "}
+      {children}{" "}
+    </div>
+  );
 };
 
 WelcomeScreen.propTypes = {
