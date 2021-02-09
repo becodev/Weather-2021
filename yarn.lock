@@ -13730,6 +13730,11 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+three@^0.125.2:
+  version "0.125.2"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.125.2.tgz#dcba12749a2eb41522e15212b919cd3fbf729b12"
+  integrity sha512-7rIRO23jVKWcAPFdW/HREU2NZMGWPBZ4XwEMt0Ak0jwLUKVJhcKM55eCBWyGZq/KiQbeo1IeuAoo/9l2dzhTXA==
+
 throat@^5.0.0:
   version "5.0.0"
   resolved "https://registry.npmjs.org/throat/-/throat-5.0.0.tgz"
@@ -14355,6 +14360,11 @@ value-equal@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-1.0.1.tgz#1e0b794c734c5c0cade179c437d356d931a34d6c"
   integrity sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==
+
+vanta@^0.5.21:
+  version "0.5.21"
+  resolved "https://registry.yarnpkg.com/vanta/-/vanta-0.5.21.tgz#f3548b531ac0a53ea0b161f12c880474f0d92b29"
+  integrity sha512-UYW6rYXVl8klFbQrhmgDMZ7SCys9hKROIuTlq5M+v6j346BPu1wqBwVRQPHiYsuooWkUYY6HSXV/9HrJBSuo6g==
 
 vary@~1.1.2:
   version "1.1.2"
