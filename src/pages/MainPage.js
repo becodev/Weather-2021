@@ -6,9 +6,9 @@ import Paper from "@material-ui/core/Paper";
 
 const cities = [
   { city: "Buenos Aires", country: "Argentina" },
-  { city: "Rosario", country: "Argentina" },
-  { city: "Concordia", country: "Argentina" },
-  { city: "Colon", country: "Argentina" },
+  { city: "Botogá", country: "Colombia" },
+  { city: "Madrid", country: "España" },
+  { city: "Ciudad de Mexico", country: "Mexico" },
 ];
 
 const MainPage = (props) => {
