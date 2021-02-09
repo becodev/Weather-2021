@@ -5,10 +5,10 @@ import AppFrame from "./../components/AppFrame";
 import Paper from "@material-ui/core/Paper";
 
 const cities = [
-  { city: "Buenos Aires", country: "Argentina" },
-  { city: "Botogá", country: "Colombia" },
-  { city: "Madrid", country: "España" },
-  { city: "Ciudad de Mexico", country: "Mexico" },
+  { city: "Buenos Aires", country: "Argentina", countryCode: "AR" },
+  { city: "Bogota", country: "Colombia", countryCode: "CO" },
+  { city: "Madrid", country: "España", countryCode: "ES" },
+  { city: "Ciudad de Mexico", country: "Mexico", countryCode: "MX" },
 ];
 
 const MainPage = (props) => {

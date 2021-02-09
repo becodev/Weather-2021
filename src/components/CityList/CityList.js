@@ -37,21 +37,35 @@ const CityList = ({ cities, onClickCity }) => {
   const [allWeather, setAllWeather] = useState({});
 
   useEffect(() => {
-    const setWeather = (city) => {
+    const setWeather = (city, country, countryCode) => {
       const appid = "4d66756d2f1463d481841de10d882e5a";
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${appid}`;
       axios.get(url).then((response) => {
         //si la respuesta es correcta...
         const { data } = response;
+        const temperature = data.main.temp;
+        const state = data.weather[0].main.toLowerCase();
+        // obtenemos los datos desde la api (temperatura y state)
+        const propName = `${city}-${country}`; // Ej. [Ciudad de Mexico-Mexico]
+        const propValue = { temperature, state }; // Ej. {temperature: 10, state: "sunny"}
+
+        /*
+          {
+            [Ciudad de Mexico-Mexico]: {temperature: 10, state: "sunny"}
+          }
+        */
+        setAllWeather((allWeather) => {
+          const result = { ...allWeather, [propName]: propValue };
+          return result;
+        });
       });
     };
 
-    cities.forEach(({ city, country }) => {
-      setWeather(city);
+    cities.forEach(({ city, country, countryCode }) => {
+      setWeather(city, country, countryCode);
     });
-
-    //end useEffect
   }, [cities]);
+  //end useEffect
 
   //const weather = { temperature: 10, state: "sunny" };
 
@@ -72,6 +86,7 @@ CityList.propTypes = {
     PropTypes.shape({
       city: PropTypes.string.isRequired,
       country: PropTypes.string.isRequired,
+      countryCode: PropTypes.string.isRequired,
     })
   ).isRequired,
   onClickCity: PropTypes.func.isRequired,
