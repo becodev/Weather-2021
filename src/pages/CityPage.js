@@ -10,7 +10,7 @@ import AppFrame from "./../components/AppFrame";
 const CityPage = (props) => {
   const city = "Buenos Aires";
   const country = "Argentina";
-  const state = "cloudy";
+  const state = "clear";
   const temperature = 20;
   const humidity = 70;
   const wind = 5;
@@ -32,10 +32,10 @@ const CityPage = (props) => {
     },
   ];
   const forecastItemList = [
-    { hour: 5, state: "sunny", temperature: 13, weekDay: "Jueves" },
-    { hour: 15, state: "sunny", temperature: 13, weekDay: "Jueves" },
-    { hour: 2, state: "sunny", temperature: 13, weekDay: "Jueves" },
-    { hour: 4, state: "sunny", temperature: 13, weekDay: "Jueves" },
+    { hour: 5, state: "clear", temperature: 13, weekDay: "Jueves" },
+    { hour: 15, state: "clear", temperature: 13, weekDay: "Jueves" },
+    { hour: 2, state: "clear", temperature: 13, weekDay: "Jueves" },
+    { hour: 4, state: "clear", temperature: 13, weekDay: "Jueves" },
   ];
 
   return (

@@ -33,7 +33,7 @@ const ForecastChart = ({ data }) => {
 ForecastChart.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      darHour: PropTypes.string.isRequired,
+      dayHour: PropTypes.string.isRequired,
       min: PropTypes.number.isRequired,
       max: PropTypes.number.isRequired,
     })

@@ -21,7 +21,6 @@ const WelcomeScreen = ({ children }) => {
     return () => {
       if (vanta) {
         vanta.destroy();
-        console.log("Recursos liberados");
         //liberamos los recursos de vanta
       }
     };
