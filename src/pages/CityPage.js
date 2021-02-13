@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import CityInfo from "./../components/CityInfo";
 import Weather from "./../components/Weather";
@@ -8,13 +9,23 @@ import Forecast from "./../components/Forecast";
 import AppFrame from "./../components/AppFrame";
 
 const CityPage = (props) => {
+  const [data, setData] = useState(null);
+  const [forecastItemList, setForecastItemList] = useState(null);
+
+  const params = useParams();
+
+  useEffect(() => {
+    setData(dataExample);
+    setForecastItemList(forecastItemListExample);
+  }, []);
+
   const city = "Buenos Aires";
   const country = "Argentina";
   const state = "clear";
   const temperature = 20;
   const humidity = 70;
   const wind = 5;
-  const data = [
+  const dataExample = [
     {
       dayHour: "Jue 18",
       min: 14,
@@ -31,7 +42,7 @@ const CityPage = (props) => {
       max: 35,
     },
   ];
-  const forecastItemList = [
+  const forecastItemListExample = [
     { hour: 5, state: "clear", temperature: 13, weekDay: "Jueves" },
     { hour: 15, state: "clear", temperature: 13, weekDay: "Jueves" },
     { hour: 2, state: "clear", temperature: 13, weekDay: "Jueves" },
@@ -50,12 +61,10 @@ const CityPage = (props) => {
           <WeatherDetails humidity={humidity} wind={wind}></WeatherDetails>
         </Grid>
 
-        <Grid item>
-          <ForecastChart data={data} />
-        </Grid>
+        <Grid item>{data && <ForecastChart data={data} />}</Grid>
 
         <Grid item>
-          <Forecast forecastItemList={forecastItemList} />
+          {forecastItemList && <Forecast forecastItemList={forecastItemList} />}
         </Grid>
       </Grid>
     </AppFrame>
