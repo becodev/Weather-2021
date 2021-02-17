@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import moment from "moment";
+import "moment/locale/es";
 import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import CityInfo from "./../components/CityInfo";
@@ -12,14 +15,42 @@ const CityPage = (props) => {
   const [data, setData] = useState(null);
   const [forecastItemList, setForecastItemList] = useState(null);
 
-  const params = useParams();
+  const { city, countryCode } = useParams();
 
   useEffect(() => {
-    setData(dataExample);
-    setForecastItemList(forecastItemListExample);
-  }, []);
+    const getForecast = async () => {
+      const appid = "4d66756d2f1463d481841de10d882e5a";
+      const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&appid=${appid}`;
+      try {
+        const { data } = await axios.get(url);
+        console.log("data", data);
 
-  const city = "Buenos Aires";
+        const daysAhead = [0, 1, 2, 3, 4, 5];
+        const days = daysAhead.map((d) => moment().add(d, "d"));
+        const dataAux = days.map((day) => {
+          const tempObjArray = data.list.filter((item) => {
+            const dayOfYear = moment.unix(item.dt).dayOfYear();
+            return dayOfYear === day.dayOfYear();
+          });
+          console.log(day.dayOfYear());
+          console.log("Array ", tempObjArray);
+          //dayHour, min, max
+          return {
+            dayHour: day.format("ddd"),
+            min: 10,
+            max: 30,
+          };
+        });
+        setData(dataAux);
+        setForecastItemList(forecastItemListExample);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getForecast();
+  }, [city, countryCode]);
+
   const country = "Argentina";
   const state = "clear";
   const temperature = 20;
