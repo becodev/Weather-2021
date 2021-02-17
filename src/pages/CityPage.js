@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import useCityPage from "./../hooks/useCityPage";
 import Grid from "@material-ui/core/Grid";
 import CityInfo from "./../components/CityInfo";
@@ -7,15 +8,22 @@ import WeatherDetails from "./../components/WeatherDetails";
 import ForecastChart from "./../components/ForecastChart";
 import Forecast from "./../components/Forecast";
 import AppFrame from "./../components/AppFrame";
+import useCityList from "./../hooks/useCityList";
+import { getCityCode } from "./../utils/utils";
+import { getCountryName } from "./../utils/serviceCities";
 
 const CityPage = () => {
-  const { city, chartData, forecastItemList } = useCityPage();
+  const { city, countryCode, chartData, forecastItemList } = useCityPage();
 
-  const country = "Argentina";
-  const state = "clear";
-  const temperature = 20;
-  const humidity = 70;
-  const wind = 5;
+  const { allWeather } = useCityList([{ city, countryCode }]);
+
+  const weather = allWeather[getCityCode(city, countryCode)];
+
+  const country = countryCode && getCountryName(countryCode);
+  const humidity = weather && weather.humidity;
+  const wind = weather && weather.wind;
+  const state = weather && weather.state;
+  const temperature = weather && weather.temperature;
 
   return (
     <AppFrame>
@@ -25,10 +33,14 @@ const CityPage = () => {
         </Grid>
 
         <Grid container item xs={12} justify="center">
-          <Weather state={state} temperature={temperature}></Weather>
-          <WeatherDetails humidity={humidity} wind={wind}></WeatherDetails>
+          <Weather state={state} temperature={temperature} />
+          {humidity && wind && (
+            <WeatherDetails humidity={humidity} wind={wind} />
+          )}
         </Grid>
-
+        <Grid item>
+          {!chartData && !forecastItemList && <LinearProgress />}
+        </Grid>
         <Grid item>{chartData && <ForecastChart data={chartData} />}</Grid>
 
         <Grid item>
