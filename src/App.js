@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage";
 import MainPage from "./pages/MainPage";
@@ -9,12 +9,25 @@ import Grid from "@material-ui/core/Grid";
 const App = () => {
   const [allWeather, setAllWeather] = useState({});
 
-  const onSetAllWeather = useMemo(
-    () => (weatherCity) => {
-      setAllWeather((allWeather) => ({ ...allWeather, ...weatherCity }));
+  const onSetAllWeather = useCallback( (weatherCity) => {
+      setAllWeather((allWeather) => {
+        return { ...allWeather, ...weatherCity }
     },
-    [setAllWeather]
-  );
+    [setAllWeather]);
+
+
+    const actions = useMemo( () => (
+      {
+        onSetAllWeather
+      }
+    ), [onSetAllWeather] );
+
+    const data = useMemo( () => (
+      {
+        allWeather
+      }
+    ), [allWeather]);
+
   return (
     <Grid container justify="center" direction="row">
       <Grid item xs={12} sm={11} md={10} lg={8}>
@@ -25,14 +38,14 @@ const App = () => {
             </Route>
             <Route path="/main">
               <MainPage
-                allWeather={allWeather}
-                onSetAllWeather={onSetAllWeather}
+                data={data}
+                actions={actions}
               />
             </Route>
             <Route path="/city/:countryCode/:city">
               <CityPage
-                allWeather={allWeather}
-                onSetAllWeather={onSetAllWeather}
+                data={data}
+                actions={actions}
               />
             </Route>
             <Route>

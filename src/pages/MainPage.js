@@ -5,7 +5,7 @@ import AppFrame from "./../components/AppFrame";
 import Paper from "@material-ui/core/Paper";
 import { getCities } from "./../utils/serviceCities";
 
-const MainPage = ({ onSetAllWeather, allWeather }) => {
+const MainPage = ({ actions, data }) => {
   const history = useHistory();
 
   const onClickHandler = (city, countryCode) => {
@@ -19,8 +19,8 @@ const MainPage = ({ onSetAllWeather, allWeather }) => {
         <CityList
           cities={getCities()}
           onClickCity={onClickHandler}
-          allWeather={allWeather}
-          onSetAllWeather={onSetAllWeather}
+          data={data}
+          actions={actions}
         />
       </Paper>
     </AppFrame>
