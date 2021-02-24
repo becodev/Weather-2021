@@ -13,11 +13,13 @@ import { getCityCode } from "./../utils/utils";
 import { getCountryName } from "./../utils/serviceCities";
 
 const CityPage = ({ actions, data }) => {
-  const { allWeather, chartData, forecastItemList } = data;
+  const { allWeather, allChartData, allForecastItemList } = data;
 
   const { onSetAllWeather, onSetChartData, onSetForecastItemList } = actions;
 
   const { city, countryCode } = useCityPage(
+    allChartData,
+    allForecastItemList,
     onSetChartData,
     onSetForecastItemList
   );
@@ -26,7 +28,11 @@ const CityPage = ({ actions, data }) => {
 
   useCityList(cities, onSetAllWeather, allWeather);
 
-  const weather = allWeather[getCityCode(city, countryCode)];
+  const cityCode = getCityCode(city, countryCode);
+
+  const weather = allWeather[cityCode];
+  const chartData = allChartData[cityCode];
+  const forecastItemList = allForecastItemList[cityCode];
 
   const country = countryCode && getCountryName(countryCode);
   const humidity = weather && weather.humidity;

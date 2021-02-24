@@ -8,14 +8,31 @@ import Grid from "@material-ui/core/Grid";
 
 const App = () => {
   const [allWeather, setAllWeather] = useState({});
-  const [chartData, onSetChartData] = useState(null);
-  const [forecastItemList, onSetForecastItemList] = useState(null);
+  const [allChartData, setAllChartData] = useState({});
+  const [allForecastItemList, setAllForecastItemList] = useState({});
 
   const onSetAllWeather = useCallback(
     (weatherCity) => {
       setAllWeather((allWeather) => ({ ...allWeather, ...weatherCity }));
     },
     [setAllWeather]
+  );
+
+  const onSetChartData = useCallback(
+    (chartDataCity) => {
+      setAllChartData((chartData) => ({ ...chartData, ...chartDataCity }));
+    },
+    [setAllChartData]
+  );
+
+  const onSetForecastItemList = useCallback(
+    (forecastItemListCity) => {
+      setAllForecastItemList((forecastItemList) => ({
+        ...forecastItemList,
+        ...forecastItemListCity,
+      }));
+    },
+    [setAllForecastItemList]
   );
 
   const actions = useMemo(
@@ -30,10 +47,10 @@ const App = () => {
   const data = useMemo(
     () => ({
       allWeather,
-      chartData,
-      forecastItemList,
+      allChartData,
+      allForecastItemList,
     }),
-    [allWeather, chartData, forecastItemList]
+    [allWeather, allChartData, allForecastItemList]
   );
 
   return (
