@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import WelcomeScreen from "./../components/WelcomeScreen";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -8,13 +8,14 @@ import { IconContext } from "react-icons";
 import { WiDaySunny } from "react-icons/wi";
 
 const WelcomePage = () => {
+  const iconContextSize = useMemo(() => ({ size: "5em" }), []);
   return (
     <WelcomeScreen>
       <Grid container direction="column" justify="center" className="full">
         <div className="highlight">
           <Grid item container xs={12} justify="center" alignItems="center">
             <Grid item>
-              <IconContext.Provider value={{ size: "5em" }}>
+              <IconContext.Provider value={iconContextSize}>
                 <WiDaySunny />
               </IconContext.Provider>
             </Grid>
