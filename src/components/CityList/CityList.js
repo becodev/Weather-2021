@@ -8,6 +8,10 @@ import Weather from "../Weather";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import {
+  useWeatherDispatchContext,
+  useWeatherStateContext,
+} from "../../WeatherContext";
 
 const CityListItem = React.memo(function CityListItem({
   city,
@@ -49,7 +53,10 @@ const renderCityAndCountry = (eventOnClickCity) => (
   );
 };
 
-const CityList = ({ cities, onClickCity, actions, data }) => {
+const CityList = ({ cities, onClickCity }) => {
+  const actions = useWeatherDispatchContext();
+  const data = useWeatherStateContext();
+
   const { allWeather } = data;
   const { error, setError } = useCityList(cities, allWeather, actions);
 

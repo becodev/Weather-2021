@@ -11,11 +11,16 @@ import AppFrame from "./../components/AppFrame";
 import useCityList from "./../hooks/useCityList";
 import { getCityCode } from "./../utils/utils";
 import { getCountryName } from "./../utils/serviceCities";
+import {
+  useWeatherDispatchContext,
+  useWeatherStateContext,
+} from "../WeatherContext";
 
-const CityPage = ({ actions, data }) => {
+const CityPage = () => {
+  const actions = useWeatherDispatchContext();
+  const data = useWeatherStateContext();
+
   const { allWeather, allChartData, allForecastItemList } = data;
-
-  //const { onSetAllWeather, onSetChartData, onSetForecastItemList } = actions;
 
   const { city, countryCode } = useCityPage(
     allChartData,
